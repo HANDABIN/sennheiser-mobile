@@ -75,7 +75,7 @@ function showProducts(obj) {
 
   // params == null 이면(시작 페이지 dog 출력)
   if(params == null) {
-    params = 'dog'
+    params = '무선헤드폰'
   }
   console.log(params);  
 
