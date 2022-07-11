@@ -1,3 +1,28 @@
+// 검색창 컴포넌트 UI
+$(function(){
+  const html = `
+    <!-- 검색 UI -->
+    <div class="search-box">
+      <form class="search-box-container">
+        <input 
+          type="search" 
+          id="search"
+          placeholder="검색"
+          required
+        >
+        <div class="button-group">
+          <button id="submit" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-close">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </form>
+    </div>`;
+  $('body').append(html); 
+
+}); // $
 $(function(){
 
   /*** #gnb toggle ***/
@@ -9,21 +34,35 @@ $(function(){
   $('#btn-close').click(function(){
     $('#gnb').removeClass('on');
   });
-  
-});
+
+  /*** 검색창 열고, 닫기 */
+  // 1. #icon-menu .bi-search 누르면 열기
+  $('#icon-menu .bi-search').click(function(){
+    $(".search-box").addClass('on');
+  });
+  // 2. .search-box .btn-close 누르면 닫기
+  $('.search-box .btn-close').click(function(){
+    $(".search-box").removeClass('on');
+  })
+}); // $
+
+
+
 
 
 
 
 // 제품 데이터 가져오기
 function getData() {
-  fetch('https://raw.githubusercontent.com/csslick/animal-mobile/main/animal-data.json')
+  //
+  const DataURL = 'https://raw.githubusercontent.com/HANDABIN/sennheiser-mobile/main/data.json';
+  fetch(DataURL)
   .then(function(res){
-    return res.json(); // JSON 객체 변환
+    return res.json();//JASON 객체 변환
   })
   .then(function(obj){
-    // obj 동물데이터
     showProducts(obj);
+    console.log(obj);
   });
 }
 
